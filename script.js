@@ -32,6 +32,23 @@ async function setup() {
 
       textElem.textContent = text
     })
+
+    video.addEventListener("click", async e => {
+      return
+      canvas.getContext("2d").drawImage(video, 0, 0, video.width, video.height)
+      const {
+        data: { text },
+      } = await worker.recognize(canvas)
+
+      var msg = new SpeechSynthesisUtterance(text.replace(/\s/g, " "));
+      msg.lang = 'zh';
+      speechSynthesis.speak(
+        msg
+      )
+
+      textElem.textContent = text
+    })
+
   })
 }
 
