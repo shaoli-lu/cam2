@@ -1,4 +1,5 @@
 const video = document.querySelector("video")
+const btn = document.getElementById("btn")
 const textElem = document.querySelector("[data-text]")
 video.setAttribute('autoplay', '');
 video.setAttribute('muted', '');
@@ -33,7 +34,7 @@ async function setup() {
       textElem.textContent = text
     })
 
-    video.addEventListener("click", async e => {
+    btn.addEventListener("click", async e => {
       return
       canvas.getContext("2d").drawImage(video, 0, 0, video.width, video.height)
       const {
