@@ -18,8 +18,10 @@ async function setup() {
     canvas.width = video.width
     canvas.height = video.height
 
-    document.addEventListener("keypress", async e => {
-      if (e.code !== "Space") return
+      // document.addEventListener("keypress", async e => {
+      // if (e.code == "Backspace") return
+      btn.addEventListener("click", async e => {
+    
       canvas.getContext("2d").drawImage(video, 0, 0, video.width, video.height)
       const {
         data: { text },
@@ -34,23 +36,43 @@ async function setup() {
       textElem.textContent = text
     })
 
-    btn.addEventListener("click", async e => {
-      return
-      canvas.getContext("2d").drawImage(video, 0, 0, video.width, video.height)
-      const {
-        data: { text },
-      } = await worker.recognize(canvas)
+     document.addEventListener("keypress", async e => {
+      if (e.code == "Backspace") return
+    
+        canvas.getContext("2d").drawImage(video, 0, 0, video.width, video.height)
+        const {
+          data: { text },
+        } = await worker.recognize(canvas)
+  
+        var msg = new SpeechSynthesisUtterance(text.replace(/\s/g, " "));
+        msg.lang = 'zh';
+        speechSynthesis.speak(
+          msg
+        )
+  
+        textElem.textContent = text
+      })
+  
+    // btn.addEventListener("click", async e => {
+    //   return
+    //   canvas.getContext("2d").drawImage(video, 0, 0, video.width, video.height)
+    //   const {
+    //     data: { text },
+    //   } = await worker.recognize(canvas)
 
-      var msg = new SpeechSynthesisUtterance(text.replace(/\s/g, " "));
-      msg.lang = 'zh';
-      speechSynthesis.speak(
-        msg
-      )
+    //   var msg = new SpeechSynthesisUtterance(text.replace(/\s/g, " "));
+    //   msg.lang = 'zh';
+    //   speechSynthesis.speak(
+    //     msg
+    //   )
 
-      textElem.textContent = text
-    })
+    //   textElem.textContent = text
+    // })
 
   })
 }
 
 setup()
+// btn.addEventListener('click', function(){
+//   setup();
+// });
