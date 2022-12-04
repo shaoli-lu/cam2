@@ -1,4 +1,4 @@
-button {
+/* button {
 	background: Green; 
 	border-radius: 12px;  
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -6,4 +6,23 @@ button {
 	font-size: 20px;
 	padding: 5px;
 	margin: 5px;
-}
+} */
+
+#btn {
+    background-color: green;
+    color: #fb8f4f;;
+    text-decoration: none;
+    padding: 3px 9px;
+    margin-left: 25px;
+	margin-top: 15px;
+	margin-bottom: 5px;
+    border-radius: 8px;
+    font-size: 2rem;
+    font-weight: bold;
+    display: inline-block;
+  }
+  
+  #btn:hover {
+    background: #37B686;
+    opacity: 0.7;
+  }
